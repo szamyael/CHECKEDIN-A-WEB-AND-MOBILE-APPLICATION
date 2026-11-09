@@ -189,9 +189,95 @@ a:focus-visible,button:focus-visible{
 @media(max-width:850px){.navlinks{top:76px}}
 @media(max-width:600px){.brand span:last-child{display:none}.hero h1{font-size:clamp(32px,12vw,42px)}}
 @media(max-width:360px){.navwrap{gap:16px;padding-inline:16px}.brand{gap:8px;font-size:12px;letter-spacing:.08em}.brandmark{width:30px;height:30px}.menu{padding:7px 9px}}
+.icon-definitions{position:absolute;width:0;height:0;overflow:hidden}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.metric-value,.count-up,.result strong,.score-value{font-variant-numeric:tabular-nums}
+.metric strong .count-up,.mini-card strong .count-up,.result strong>span{display:inline;margin:0;color:inherit;font:inherit;font-variant-numeric:tabular-nums}
+.icon svg,.portrait-placeholder svg,.placeholder-icon{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.icon svg{transition:transform 180ms var(--ease-out)}
+.placeholder-icon{width:42px;height:42px;color:#577694;stroke-width:1.5}
+.people{align-items:stretch}
+.person{display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center}
+.person strong{max-width:28ch}
+.person span{margin-top:0}
+.portrait-placeholder{
+  width:108px;
+  height:112px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  margin-bottom:5px;
+  color:#54708d;
+  background:linear-gradient(145deg,#e5edf5,#f7f9fc);
+  border:1px dashed #9fb3c7;
+  border-radius:14px;
+}
+.portrait-placeholder svg{width:30px;height:30px}
+.portrait-placeholder span{font:800 9px/1.3 Arial,sans-serif;letter-spacing:.08em;text-transform:uppercase}
+.adviser{display:flex;align-items:center;gap:16px}
+.portrait-placeholder-small{width:64px;height:64px;flex:0 0 64px;margin:0;border-radius:12px}
+.portrait-placeholder-small svg{width:23px;height:23px}
+.portrait-placeholder-small span{font-size:7px}
+.adviser-copy{min-width:0}
+.adviser-copy span{margin-top:4px}
+.evaluation-charts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-top:18px}
+.score-chart{min-width:0;margin:0;padding:24px;background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:0 12px 24px rgba(17,39,62,.04)}
+.score-chart figcaption{margin-bottom:20px}
+.score-chart figcaption h3{margin:0;color:var(--navy);font:800 17px/1.35 Arial,sans-serif}
+.score-chart figcaption span{display:block;margin-top:5px;color:var(--muted);font:12px/1.5 Arial,sans-serif}
+.score-axis,.score-row{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(64px,1fr) 42px;align-items:center;gap:10px}
+.score-axis{margin-bottom:5px;color:#748397;font:700 9px Arial,sans-serif}
+.score-axis>span:last-child{text-align:right}
+.score-axis-values{display:flex;justify-content:space-between;padding-bottom:5px;border-bottom:1px solid #dfe7ef}
+.score-rows{display:grid;gap:12px;margin:0;padding:0;list-style:none}
+.score-row{min-height:22px}
+.score-label{color:#465a70;font:12px/1.35 Arial,sans-serif}
+.score-track{height:9px;overflow:hidden;border-radius:999px;background-color:#edf2f7;background-image:linear-gradient(90deg,transparent calc(50% - .5px),#d2dce7 50%,transparent calc(50% + .5px))}
+.score-bar{display:block;height:100%;border-radius:inherit;background:linear-gradient(90deg,#4c84aa,#c6a56a);transform:scaleX(1);transform-origin:left center;transition:transform 650ms var(--ease-out)}
+.score-value{text-align:right;color:var(--navy);font:800 12px Arial,sans-serif}
+.chart-note{margin:12px 0 0;color:#6b7a8b;font:12px/1.6 Arial,sans-serif}
+.js-motion .reveal{opacity:0;transition:opacity 150ms ease}
+.js-motion .reveal.is-visible{opacity:1}
+@media(prefers-reduced-motion:no-preference){
+  .js-motion .reveal{transform:translateY(10px);transition:opacity 460ms var(--ease-out),transform 460ms var(--ease-out);transition-delay:var(--reveal-delay,0ms)}
+  .js-motion .reveal.is-visible{transform:translateY(0)}
+  .js-motion .score-chart:not(.is-visible) .score-bar{transform:scaleX(0)}
+}
+@media(prefers-reduced-motion:reduce){
+  .js-motion .reveal{transform:none;transition:opacity 150ms ease}
+  .js-motion .score-chart .score-bar{transform:scaleX(1);transition:none}
+  .feature:hover .icon svg{transform:none}
+}
+@media(hover:hover) and (pointer:fine){
+  .feature:hover .icon svg{transform:translateY(-2px) rotate(-4deg)}
+}
+@media(max-width:850px){.evaluation-charts{grid-template-columns:1fr}}
+@media(max-width:600px){
+  .score-chart{padding:18px}
+  .score-axis,.score-row{grid-template-columns:minmax(0,1.15fr) minmax(52px,1fr) 42px;gap:8px}
+  .score-label{font-size:11px}
+}
 </style>
 </head>
 <body>
+<svg class="icon-definitions" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+<symbol id="icon-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.5"/><path d="M4.5 20a7.5 7.5 0 0 1 15 0"/></symbol>
+<symbol id="icon-lock" viewBox="0 0 24 24"><rect x="4.5" y="10" width="15" height="11" rx="2"/><path d="M8 10V7a4 4 0 1 1 8 0v3"/></symbol>
+<symbol id="icon-users" viewBox="0 0 24 24"><path d="M16 20v-1.5a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4V20"/><circle cx="9.5" cy="7.5" r="3.5"/><path d="M17 11a3.5 3.5 0 1 0-1-6.85M21 20v-1.5a4 4 0 0 0-3-3.87"/></symbol>
+<symbol id="icon-calendar" viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="16" rx="2"/><path d="M7.5 3v4M16.5 3v4M3.5 9.5h17M8 13h.01M12 13h.01M16 13h.01M8 17h.01M12 17h.01"/></symbol>
+<symbol id="icon-qr" viewBox="0 0 24 24"><path d="M4 9V4h5M15 4h5v5M20 15v5h-5M9 20H4v-5M5 5h4v4H5zM15 5h4v4h-4zM5 15h4v4H5zM13 13h2v2h-2zM17 13h2M13 17h2M17 17h2v2"/></symbol>
+<symbol id="icon-key" viewBox="0 0 24 24"><circle cx="8" cy="15" r="4.5"/><path d="m11.5 11.5 8-8 2 2-2 2 2 2-3 3-2-2-2 2"/></symbol>
+<symbol id="icon-check" viewBox="0 0 24 24"><path d="M12 3 19 6v5c0 4.5-3 7.7-7 10-4-2.3-7-5.5-7-10V6l7-3Z"/><path d="m8.5 12 2.3 2.3 4.8-4.8"/></symbol>
+<symbol id="icon-chart" viewBox="0 0 24 24"><path d="M4 20V4M4 20h17"/><path d="m7 15 4-4 3 2 5-6"/><circle cx="7" cy="15" r="1"/><circle cx="11" cy="11" r="1"/><circle cx="14" cy="13" r="1"/><circle cx="19" cy="7" r="1"/></symbol>
+<symbol id="icon-bell" viewBox="0 0 24 24"><path d="M18 9a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9ZM10 21h4"/></symbol>
+<symbol id="icon-star" viewBox="0 0 24 24"><path d="m12 3 2.8 5.7 6.2.9-4.5 4.4 1.1 6.2-5.6-3-5.6 3 1.1-6.2L3 9.6l6.2-.9L12 3Z"/></symbol>
+<symbol id="icon-shield" viewBox="0 0 24 24"><path d="M12 3 20 6v5c0 4.5-3.5 8-8 10-4.5-2-8-5.5-8-10V6l8-3Z"/><path d="m9 12 2 2 4-4"/></symbol>
+<symbol id="icon-settings" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="m19.4 15 .1.1 1.4 1.1-1.5 2.6-1.7-.7a8 8 0 0 1-1.7 1l-.3 1.8h-3l-.3-1.8a8 8 0 0 1-1.7-1l-1.7.7-1.5-2.6 1.4-1.1a7 7 0 0 1 0-2l-1.4-1.1 1.5-2.6 1.7.7a8 8 0 0 1 1.7-1l.3-1.8h3l.3 1.8a8 8 0 0 1 1.7 1l1.7-.7 1.5 2.6-1.4 1.1a7 7 0 0 1 0 2Z" transform="translate(-1 -1) scale(.96)"/></symbol>
+<symbol id="icon-devices" viewBox="0 0 24 24"><rect x="3" y="4" width="13" height="11" rx="1.5"/><path d="M7 20h5M9.5 15v5"/><rect x="16.5" y="8" width="5" height="12" rx="1.2"/><path d="M18.5 17.5h1"/></symbol>
+<symbol id="icon-image" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="9" r="1.5"/><path d="m4 18 5-5 3 3 3-4 5 6"/></symbol>
+</svg>
 <a class="skip-link" href="#main-content">Skip to content</a>
 <header class="topbar"><div class="navwrap">
 <a class="brand" href="#home"><span class="brandmark">C</span> CHECKEDIN <span style="font-weight:400;letter-spacing:.04em;color:#738398">RESEARCH</span></a>
@@ -213,12 +299,12 @@ a:focus-visible,button:focus-visible{
     <div class="panel-badge">Research snapshot</div>
   </div>
   <div class="panel-metrics">
-    <div class="metric"><strong>11</strong><span>Black-box test cases passed</span></div>
+    <div class="metric"><strong class="metric-value"><span class="count-up" data-count="11" data-decimals="0" aria-hidden="true">11</span><span class="sr-only">11</span></strong><span>Black-box test cases passed</span></div>
     <div class="metric-row">
-      <div class="mini-card"><strong>70</strong><span>Testing steps executed</span></div>
-      <div class="mini-card"><strong>4.83</strong><span>Top TAM rating</span></div>
+      <div class="mini-card"><strong class="metric-value"><span class="count-up" data-count="70" data-decimals="0" aria-hidden="true">70</span><span class="sr-only">70</span></strong><span>Testing steps executed</span></div>
+      <div class="mini-card"><strong class="metric-value"><span class="count-up" data-count="4.83" data-decimals="2" aria-hidden="true">4.83</span><span class="sr-only">4.83</span></strong><span>Top TAM rating</span></div>
     </div>
-    <div class="metric"><strong>4.76</strong><span>Security quality score</span></div>
+    <div class="metric"><strong class="metric-value"><span class="count-up" data-count="4.76" data-decimals="2" aria-hidden="true">4.76</span><span class="sr-only">4.76</span></strong><span>Security quality score</span></div>
   </div>
 </div>
 </div></section>
@@ -240,8 +326,12 @@ a:focus-visible,button:focus-visible{
 <div class="section-head"><div class="kicker">01 / Research overview</div><h2>Project background</h2><p class="lead">CHECKEDIN addresses challenges associated with recording, verifying, monitoring, and reporting attendance in College of Computer Studies classes and events.</p></div>
 <div class="grid two"><article class="card"><h3>Problem statement</h3><p>Existing attendance and event processes can make it difficult to verify student presence, maintain accurate records, monitor participation, and prepare attendance reports. Manual recording and limited monitoring can add administrative effort for faculty members and organization officers.</p></article><article class="card"><h3>General objective</h3><p>To design, develop, and evaluate CHECKEDIN during Academic Year 2026–2027 to improve the accuracy, security, efficiency, and reliability of attendance monitoring through secure attendance verification, automated reporting, real-time monitoring, and game-style participation incentives.</p></article></div>
 <div style="margin-top:34px"><div class="kicker">Research team</div><h2 style="font-size:25px">Researchers and adviser</h2></div>
-<div class="people"><div class="person"><strong>Mikhail Jeon Lorrenzo M. Cordova</strong><span>Researcher</span></div><div class="person"><strong>Sk Briddon T. Dumlao</strong><span>Researcher</span></div><div class="person"><strong>John Lester D. Matienzo</strong><span>Researcher</span></div></div>
-<div class="adviser"><strong>Research Adviser</strong><span>Rachiel R. Rivano, Ph.D.</span></div>
+<div class="people">
+<article class="person"><div class="portrait-placeholder" role="img" aria-label="Researcher photo placeholder"><svg aria-hidden="true"><use href="#icon-user"/></svg><span>Photo placeholder</span></div><strong>Mikhail Jeon Lorrenzo M. Cordova</strong><span>Researcher</span></article>
+<article class="person"><div class="portrait-placeholder" role="img" aria-label="Researcher photo placeholder"><svg aria-hidden="true"><use href="#icon-user"/></svg><span>Photo placeholder</span></div><strong>Sk Briddon T. Dumlao</strong><span>Researcher</span></article>
+<article class="person"><div class="portrait-placeholder" role="img" aria-label="Researcher photo placeholder"><svg aria-hidden="true"><use href="#icon-user"/></svg><span>Photo placeholder</span></div><strong>John Lester D. Matienzo</strong><span>Researcher</span></article>
+</div>
+<div class="adviser"><div class="portrait-placeholder portrait-placeholder-small" role="img" aria-label="Adviser photo placeholder"><svg aria-hidden="true"><use href="#icon-user"/></svg><span>Photo placeholder</span></div><div class="adviser-copy"><strong>Research Adviser</strong><span>Rachiel R. Rivano, Ph.D.</span></div></div>
 </section>
 <section class="tinted" id="objectives"><div class="section">
 <div class="section-head"><div class="kicker">02 / Research objectives</div><h2>Specific objectives</h2><p class="lead">The project is guided by three objectives covering system development, functional testing, and evaluation.</p></div>
@@ -259,35 +349,59 @@ a:focus-visible,button:focus-visible{
 <section class="tinted" id="features"><div class="section">
 <div class="section-head"><div class="kicker">04 / System capabilities</div><h2>Core features</h2><p class="lead">CHECKEDIN brings attendance workflows and event administration into one role-aware platform.</p></div>
 <div class="grid three">
-<article class="feature"><div class="icon">01</div><h3>Account registration &amp; authentication</h3><p>User registration, sign-in, and account management.</p></article>
-<article class="feature"><div class="icon">02</div><h3>Role-based access</h3><p>Access roles for students, professors, organization officers, and administrators.</p></article>
-<article class="feature"><div class="icon">03</div><h3>Event management</h3><p>Event creation, management, approval, and scheduling.</p></article>
-<article class="feature"><div class="icon">04</div><h3>QR attendance verification</h3><p>Dynamic QR codes with expiration-based verification.</p></article>
-<article class="feature"><div class="icon">05</div><h3>OTP verification</h3><p>Time-limited one-time passwords for attendance verification.</p></article>
-<article class="feature"><div class="icon">06</div><h3>Attendance monitoring</h3><p>Attendance recording, tracking, and real-time monitoring.</p></article>
-<article class="feature"><div class="icon">07</div><h3>Reports &amp; analytics</h3><p>Attendance report generation and analytics for authorized users.</p></article>
-<article class="feature"><div class="icon">08</div><h3>Notifications</h3><p>Notifications and announcements for system activities.</p></article>
-<article class="feature"><div class="icon">09</div><h3>Participation incentives</h3><p>Participation points and reward-oriented features.</p></article>
-<article class="feature"><div class="icon">10</div><h3>Security &amp; audit trail</h3><p>Security management and activity/verification logs.</p></article>
-<article class="feature"><div class="icon">11</div><h3>Account administration</h3><p>User and account management for authorized administrators.</p></article>
-<article class="feature"><div class="icon">12</div><h3>Cross-platform access</h3><p>Web and Android interfaces, with browser-based access.</p></article>
+<article class="feature"><div class="icon"><svg aria-hidden="true"><use href="#icon-lock"/></svg></div><h3>Account registration &amp; authentication</h3><p>User registration, sign-in, and account management.</p></article>
+<article class="feature"><div class="icon"><svg aria-hidden="true"><use href="#icon-users"/></svg></div><h3>Role-based access</h3><p>Access roles for students, professors, organization officers, and administrators.</p></article>
+<article class="feature"><div class="icon"><svg aria-hidden="true"><use href="#icon-calendar"/></svg></div><h3>Event management</h3><p>Event creation, management, approval, and scheduling.</p></article>
+<article class="feature"><div class="icon"><svg aria-hidden="true"><use href="#icon-qr"/></svg></div><h3>QR attendance verification</h3><p>Dynamic QR codes with expiration-based verification.</p></article>
+<article class="feature"><div class="icon"><svg aria-hidden="true"><use href="#icon-key"/></svg></div><h3>OTP verification</h3><p>Time-limited one-time passwords for attendance verification.</p></article>
+<article class="feature"><div class="icon"><svg aria-hidden="true"><use href="#icon-check"/></svg></div><h3>Attendance monitoring</h3><p>Attendance recording, tracking, and real-time monitoring.</p></article>
+<article class="feature"><div class="icon"><svg aria-hidden="true"><use href="#icon-chart"/></svg></div><h3>Reports &amp; analytics</h3><p>Attendance report generation and analytics for authorized users.</p></article>
+<article class="feature"><div class="icon"><svg aria-hidden="true"><use href="#icon-bell"/></svg></div><h3>Notifications</h3><p>Notifications and announcements for system activities.</p></article>
+<article class="feature"><div class="icon"><svg aria-hidden="true"><use href="#icon-star"/></svg></div><h3>Participation incentives</h3><p>Participation points and reward-oriented features.</p></article>
+<article class="feature"><div class="icon"><svg aria-hidden="true"><use href="#icon-shield"/></svg></div><h3>Security &amp; audit trail</h3><p>Security management and activity/verification logs.</p></article>
+<article class="feature"><div class="icon"><svg aria-hidden="true"><use href="#icon-settings"/></svg></div><h3>Account administration</h3><p>User and account management for authorized administrators.</p></article>
+<article class="feature"><div class="icon"><svg aria-hidden="true"><use href="#icon-devices"/></svg></div><h3>Cross-platform access</h3><p>Web and Android interfaces, with browser-based access.</p></article>
 </div>
 <div style="margin-top:36px"><div class="kicker">Technology overview</div><h2 style="font-size:25px">Implementation stack</h2><div class="stack"><span class="tag">Flutter</span><span class="tag">JavaScript</span><span class="tag">TypeScript</span><span class="tag">Supabase</span><span class="tag">Vercel</span><span class="tag">Maps integration</span><span class="tag">Veryfi OCR</span></div></div>
 </div></section>
 <section class="section" id="gallery">
 <div class="section-head"><div class="kicker">05 / System screenshots</div><h2>Interface gallery</h2><p class="lead">These placeholders correspond to system views identified in the research manuscript. Replace them with actual approved screenshots before final presentation.</p></div>
 <div class="gallery">
-<figure class="shot"><div class="shotbox"><div class="placeholder-inner"><div style="font-size:30px">▧</div><div class="placeholder-label">Add screenshot here</div></div></div><figcaption><strong>Administrator Dashboard</strong><span>Manuscript Figure 4.2</span></figcaption></figure>
-<figure class="shot"><div class="shotbox"><div class="placeholder-inner"><div style="font-size:30px">▧</div><div class="placeholder-label">Add screenshot here</div></div></div><figcaption><strong>Organization Officer Dashboard</strong><span>Manuscript Figure 4.3</span></figcaption></figure>
-<figure class="shot"><div class="shotbox"><div class="placeholder-inner"><div style="font-size:30px">▧</div><div class="placeholder-label">Add screenshot here</div></div></div><figcaption><strong>Professor Dashboard</strong><span>Manuscript Figure 4.4</span></figcaption></figure>
-<figure class="shot"><div class="shotbox"><div class="placeholder-inner"><div style="font-size:30px">▧</div><div class="placeholder-label">Add screenshot here</div></div></div><figcaption><strong>Events Form</strong><span>Manuscript Figure 4.5</span></figcaption></figure>
-<figure class="shot"><div class="shotbox"><div class="placeholder-inner"><div style="font-size:30px">▧</div><div class="placeholder-label">Add screenshot here</div></div></div><figcaption><strong>Workspace Report</strong><span>Manuscript Figure 4.6</span></figcaption></figure>
-<figure class="shot"><div class="shotbox"><div class="placeholder-inner"><div style="font-size:30px">▧</div><div class="placeholder-label">Add screenshot here</div></div></div><figcaption><strong>Workspace Analytics</strong><span>Manuscript Figure 4.7</span></figcaption></figure>
+<figure class="shot"><div class="shotbox"><div class="placeholder-inner"><svg class="placeholder-icon" aria-hidden="true"><use href="#icon-image"/></svg><div class="placeholder-label">Add screenshot here</div></div></div><figcaption><strong>Administrator Dashboard</strong><span>Manuscript Figure 4.2</span></figcaption></figure>
+<figure class="shot"><div class="shotbox"><div class="placeholder-inner"><svg class="placeholder-icon" aria-hidden="true"><use href="#icon-image"/></svg><div class="placeholder-label">Add screenshot here</div></div></div><figcaption><strong>Organization Officer Dashboard</strong><span>Manuscript Figure 4.3</span></figcaption></figure>
+<figure class="shot"><div class="shotbox"><div class="placeholder-inner"><svg class="placeholder-icon" aria-hidden="true"><use href="#icon-image"/></svg><div class="placeholder-label">Add screenshot here</div></div></div><figcaption><strong>Professor Dashboard</strong><span>Manuscript Figure 4.4</span></figcaption></figure>
+<figure class="shot"><div class="shotbox"><div class="placeholder-inner"><svg class="placeholder-icon" aria-hidden="true"><use href="#icon-image"/></svg><div class="placeholder-label">Add screenshot here</div></div></div><figcaption><strong>Events Form</strong><span>Manuscript Figure 4.5</span></figcaption></figure>
+<figure class="shot"><div class="shotbox"><div class="placeholder-inner"><svg class="placeholder-icon" aria-hidden="true"><use href="#icon-image"/></svg><div class="placeholder-label">Add screenshot here</div></div></div><figcaption><strong>Workspace Report</strong><span>Manuscript Figure 4.6</span></figcaption></figure>
+<figure class="shot"><div class="shotbox"><div class="placeholder-inner"><svg class="placeholder-icon" aria-hidden="true"><use href="#icon-image"/></svg><div class="placeholder-label">Add screenshot here</div></div></div><figcaption><strong>Workspace Analytics</strong><span>Manuscript Figure 4.7</span></figcaption></figure>
 </div></section>
 <section class="tinted" id="results"><div class="section">
 <div class="section-head"><div class="kicker">06 / Research outcomes</div><h2>Documented evaluation results</h2><p class="lead">The manuscript reports favorable assessment results across the listed software quality and Technology Acceptance Model dimensions.</p></div>
-<div class="results"><div class="result"><strong>4.53–4.76</strong><span>Reported mean range across software quality criteria</span></div><div class="result"><strong>4.74–4.83</strong><span>Reported mean range across TAM dimensions</span></div></div>
-<div class="grid two" style="margin-top:18px"><article class="card"><h3>Software quality</h3><ul class="list"><li>Usability — 4.53</li><li>Functionality — 4.65</li><li>Reliability — 4.68</li><li>Efficiency — 4.71</li><li>Security — 4.76</li><li>User satisfaction — 4.56</li></ul></article><article class="card"><h3>Technology Acceptance Model</h3><ul class="list"><li>Perceived ease of use — 4.74</li><li>Perceived usefulness — 4.81</li><li>Attitude toward using — 4.83</li><li>Behavioral intention to use — 4.75</li></ul></article></div>
+<div class="results"><div class="result"><strong><span class="count-up" data-count="4.53" data-decimals="2" aria-hidden="true">4.53</span><span aria-hidden="true">–</span><span class="count-up" data-count="4.76" data-decimals="2" aria-hidden="true">4.76</span><span class="sr-only">4.53 to 4.76</span></strong><span>Reported mean range across software quality criteria</span></div><div class="result"><strong><span class="count-up" data-count="4.74" data-decimals="2" aria-hidden="true">4.74</span><span aria-hidden="true">–</span><span class="count-up" data-count="4.83" data-decimals="2" aria-hidden="true">4.83</span><span class="sr-only">4.74 to 4.83</span></strong><span>Reported mean range across TAM dimensions</span></div></div>
+<div class="evaluation-charts">
+<figure class="score-chart">
+<figcaption><h3>Software quality</h3><span>Reported means from 4.50 to 4.90</span></figcaption>
+<div class="score-axis" aria-hidden="true"><span>Criterion</span><div class="score-axis-values"><span>4.50</span><span>4.70</span><span>4.90</span></div><span>Mean</span></div>
+<ul class="score-rows">
+<li class="score-row"><span class="score-label">Usability</span><span class="score-track" aria-hidden="true"><span class="score-bar" style="width:7.5%"></span></span><span class="score-value">4.53</span></li>
+<li class="score-row"><span class="score-label">Functionality</span><span class="score-track" aria-hidden="true"><span class="score-bar" style="width:37.5%"></span></span><span class="score-value">4.65</span></li>
+<li class="score-row"><span class="score-label">Reliability</span><span class="score-track" aria-hidden="true"><span class="score-bar" style="width:45%"></span></span><span class="score-value">4.68</span></li>
+<li class="score-row"><span class="score-label">Efficiency</span><span class="score-track" aria-hidden="true"><span class="score-bar" style="width:52.5%"></span></span><span class="score-value">4.71</span></li>
+<li class="score-row"><span class="score-label">Security</span><span class="score-track" aria-hidden="true"><span class="score-bar" style="width:65%"></span></span><span class="score-value">4.76</span></li>
+<li class="score-row"><span class="score-label">User satisfaction</span><span class="score-track" aria-hidden="true"><span class="score-bar" style="width:15%"></span></span><span class="score-value">4.56</span></li>
+</ul>
+</figure>
+<figure class="score-chart">
+<figcaption><h3>Technology Acceptance Model</h3><span>Reported means from 4.50 to 4.90</span></figcaption>
+<div class="score-axis" aria-hidden="true"><span>Dimension</span><div class="score-axis-values"><span>4.50</span><span>4.70</span><span>4.90</span></div><span>Mean</span></div>
+<ul class="score-rows">
+<li class="score-row"><span class="score-label">Perceived ease of use</span><span class="score-track" aria-hidden="true"><span class="score-bar" style="width:60%"></span></span><span class="score-value">4.74</span></li>
+<li class="score-row"><span class="score-label">Perceived usefulness</span><span class="score-track" aria-hidden="true"><span class="score-bar" style="width:77.5%"></span></span><span class="score-value">4.81</span></li>
+<li class="score-row"><span class="score-label">Attitude toward using</span><span class="score-track" aria-hidden="true"><span class="score-bar" style="width:82.5%"></span></span><span class="score-value">4.83</span></li>
+<li class="score-row"><span class="score-label">Behavioral intention to use</span><span class="score-track" aria-hidden="true"><span class="score-bar" style="width:62.5%"></span></span><span class="score-value">4.75</span></li>
+</ul>
+</figure>
+</div>
+<p class="chart-note">Bars use a focused 4.50–4.90 axis to show the differences clearly. Exact values are printed; refer to the manuscript for scale interpretation and evaluation details.</p>
 <p style="font:12px/1.6 Arial,sans-serif;color:#6b7a8b;margin-top:14px">Values are reproduced from the manuscript's reported evaluation results. Refer to the complete research manuscript for scale interpretation and evaluation details.</p>
 </div></section>
 <section class="section" id="links">
@@ -302,8 +416,85 @@ a:focus-visible,button:focus-visible{
 </main>
 <footer><div class="foot"><span>© 2026 CHECKEDIN Capstone Research Project</span><span>College of Computer Studies · Academic Year 2026–2027</span></div></footer>
 <script>
+const reducedMotion=window.matchMedia('(prefers-reduced-motion: reduce)');
 const menuButton=document.getElementById('menuButton'),navLinks=document.getElementById('navLinks');
 menuButton.addEventListener('click',()=>{const open=navLinks.classList.toggle('open');menuButton.setAttribute('aria-expanded',String(open));});
+navLinks.querySelectorAll('a[href^="#"]').forEach(link=>link.addEventListener('click',event=>{
+  const target=document.getElementById(link.hash.slice(1));
+  if(!target)return;
+  event.preventDefault();
+  history.pushState(null,'',link.hash);
+  target.scrollIntoView({behavior:reducedMotion.matches?'instant':'smooth',block:'start'});
+}));
 navLinks.querySelectorAll('a').forEach(link=>link.addEventListener('click',()=>{navLinks.classList.remove('open');menuButton.setAttribute('aria-expanded','false');}));
+const counters=[...document.querySelectorAll('[data-count]')];
+const formatCounter=element=>{
+  const decimals=Number(element.dataset.decimals||0);
+  return new Intl.NumberFormat('en-US',{minimumFractionDigits:decimals,maximumFractionDigits:decimals});
+};
+const finishCounters=()=>{
+  counters.forEach(element=>{
+    element.textContent=formatCounter(element).format(Number(element.dataset.count));
+    element.dataset.counted='true';
+  });
+};
+let counterObserver;
+const observeCounters=()=>{
+  if(reducedMotion.matches||!('IntersectionObserver' in window))return;
+  counterObserver=new IntersectionObserver(entries=>{
+    entries.forEach(({target,isIntersecting})=>{
+      if(!isIntersecting||target.dataset.counted==='true')return;
+      counterObserver.unobserve(target);
+      target.dataset.counted='true';
+      const end=Number(target.dataset.count);
+      const formatter=formatCounter(target);
+      const duration=1050;
+      const start=performance.now();
+      const tick=now=>{
+        if(reducedMotion.matches){
+          target.textContent=formatter.format(end);
+          return;
+        }
+        const progress=Math.min((now-start)/duration,1);
+        const eased=1-Math.pow(1-progress,3);
+        target.textContent=formatter.format(progress===1?end:end*eased);
+        if(progress<1)requestAnimationFrame(tick);
+      };
+      target.textContent=formatter.format(0);
+      requestAnimationFrame(tick);
+    });
+  },{threshold:.5});
+  counters.filter(element=>element.dataset.counted!=='true').forEach(element=>counterObserver.observe(element));
+};
+const revealTargets=[...document.querySelectorAll('.card,.feature,.step,.person,.adviser,.shot,.result,.linkcard,.score-chart')];
+if('IntersectionObserver' in window){
+  document.documentElement.classList.add('js-motion');
+  const groups=new Map();
+  revealTargets.forEach(element=>{
+    const siblings=groups.get(element.parentElement)||[];
+    siblings.push(element);
+    groups.set(element.parentElement,siblings);
+  });
+  groups.forEach(elements=>elements.forEach((element,index)=>{
+    element.classList.add('reveal');
+    element.style.setProperty('--reveal-delay',`${Math.min(index,4)*55}ms`);
+  }));
+  const revealObserver=new IntersectionObserver(entries=>{
+    entries.forEach(({target,isIntersecting})=>{
+      if(!isIntersecting)return;
+      target.classList.add('is-visible');
+      revealObserver.unobserve(target);
+    });
+  },{threshold:.12,rootMargin:'0px 0px -8% 0px'});
+  revealTargets.forEach(element=>revealObserver.observe(element));
+}
+if(reducedMotion.matches)finishCounters();
+else observeCounters();
+reducedMotion.addEventListener('change',event=>{
+  if(event.matches){
+    counterObserver?.disconnect();
+    finishCounters();
+  }else observeCounters();
+});
 </script>
 </body></html>

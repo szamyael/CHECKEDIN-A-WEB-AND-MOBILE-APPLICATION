@@ -21,6 +21,9 @@ No build step or package installation is required.
   - Workspace Analytics (Figure 4.7)
 - Put image files in `assets/screenshots/` and update the corresponding gallery cards in `index.html`.
 - Add the demo URL when a public recording is available.
+- Researcher and adviser cards include portrait placeholders. Replace them with approved photos only with permission, keeping each person's name in the adjacent text.
+
+The evaluation chart visualizes the reported means already listed in the page; the numeric labels remain available if motion is reduced or unavailable.
 
 Do not publish student personal information, credentials, or sensitive attendance records in screenshots.
 
